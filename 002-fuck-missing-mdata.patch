@@ -1,0 +1,15 @@
+diff --git a/xlators/storage/posix/src/posix-helpers.c b/xlators/storage/posix/src/posix-helpers.c
+index 2adc6ca17..f1c790188 100644
+--- a/xlators/storage/posix/src/posix-helpers.c
++++ b/xlators/storage/posix/src/posix-helpers.c
+@@ -1692,6 +1692,10 @@ is_fresh_file(struct timespec *ts)
+     struct timespec now;
+     int64_t elapsed;
+ 
++    /* if the timestamp is zero we have some broken ass shit */
++    if (ts->tv_sec == 0 && ts->tv_nsec == 0)
++        return 1;
++
+     timespec_now_realtime(&now);
+     elapsed = (int64_t)gf_tsdiff(ts, &now);
+ 

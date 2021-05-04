@@ -1,0 +1,11 @@
+--- glusterfs-9.1/xlators/storage/posix/src/posix-helpers.c.old	2021-05-01 21:45:34.161976857 -0500
++++ glusterfs-9.1/xlators/storage/posix/src/posix-helpers.c	2021-05-01 21:45:41.212893029 -0500
+@@ -1703,7 +1703,7 @@
+     }
+ 
+     /* If the file is newer than a second, we consider it fresh. */
+-    return elapsed < 1000000;
++    return elapsed < 1000000000;
+ }
+ 
+ int
